@@ -5,12 +5,12 @@
     </div>
     <div class="py-5 px-8">
         <a href="">
-            <div class="font-semibold text-lg">NEWS</div>
+            <div class="font-semibold text-lg">COVID-19</div>
         </a>
     </div>
     <div class="py-5 px-8">
         <a href="">
-            <div class="font-semibold text-lg">SPORTS</div>
+            <div class="font-semibold text-lg">PROGRAMMING</div>
         </a>
     </div>
     <div class="py-5 px-8">

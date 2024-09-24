@@ -6,16 +6,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class cardArticle extends Component
+class Footer extends Component
 {
     /**
      * Create a new component instance.
      */
-    public $post;
-    public function __construct($post)
+    public function __construct()
     {
         //
-        $this->post = $post;
     }
 
     /**
@@ -23,6 +21,6 @@ class cardArticle extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.card-article');
+        return view('components.footer');
     }
 }
