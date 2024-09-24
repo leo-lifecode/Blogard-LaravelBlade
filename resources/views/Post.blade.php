@@ -16,8 +16,8 @@
                         />
                     </div>
                     <div class="space-y-1">
-                        <p class="font-semibold text-md">name: author</p>
-                        <p class="text-slate-500">updated: dd-mm-yyyy</p>
+                        <p class="font-semibold text-md">name: {{ $post['author']}}</p>
+                        <p class="text-slate-500">{{ $post['created_at'] }}</p>
                     </div>
                 </div>
                 <article>

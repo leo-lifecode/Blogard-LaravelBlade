@@ -6,11 +6,11 @@ use App\Models\Post;
 
 Route::get('/', function () {
     return view('Home')
-        ->with('posts', Post::getAll());
+        ->with('posts', Post::all());
 });
 
-Route::get('/post/{slug}', function ($slug) {
+Route::get('/post/{post:slug}', function (Post $post) {
     // dd(Post::getOneData($slug));
     return view('post')
-        ->with("post", Post::getOneData($slug));
+        ->with("post", $post);
 });
