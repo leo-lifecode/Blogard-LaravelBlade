@@ -20,7 +20,7 @@ Route::get('/profile/{user:username}', function (User $user) {
     ->with("Profiles", $user);
 });
 
-Route::get('/category', function (Category $category) {
+Route::get('/category/{category:name}', function (Category $category) {
     return view('category')
     ->with("posts", $category->posts);
 });

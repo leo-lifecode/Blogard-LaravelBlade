@@ -4,9 +4,9 @@
             <main class="max-w-[728px] w-full flex flex-col">
                 <x-main-nav></x-main-nav>
                 <article class="grid grid-cols-1 md:grid-cols-3 max-lg:p-6 lg:ps-8 gap-x-6 gap-y-8 mt-5">
-                    {{-- @foreach ($posts as $post)
+                    @foreach ($posts as $post)
                     <x-card-article :post="$post"></x-card-article>
-                    @endforeach --}}
+                    @endforeach
                 </article>
             </main>
         </div>

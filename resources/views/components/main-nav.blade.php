@@ -4,18 +4,18 @@
         <div>Januari 12,2023</div>
     </div>
     <div class="py-5 px-8">
-        <a href="">
+        <a href="/category/">
             <div class="font-semibold text-lg">COVID-19</div>
         </a>
     </div>
     <div class="py-5 px-8">
-        <a href="">
+        <a href="/category/Programming">
             <div class="font-semibold text-lg">PROGRAMMING</div>
         </a>
     </div>
     <div class="py-5 px-8">
-        <a href="">
-            <div class="font-semibold text-lg">TECHNOLOGY</div>
+        <a href="/category/WebDevelopment">
+            <div class="font-semibold text-lg">web development</div>
         </a>
     </div>
 </div>
