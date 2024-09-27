@@ -1,8 +1,9 @@
 <?php
 
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
-
+use App\Models\User;
 
 Route::get('/', function () {
     return view('Home')
@@ -10,7 +11,16 @@ Route::get('/', function () {
 });
 
 Route::get('/post/{post:slug}', function (Post $post) {
-    // dd(Post::getOneData($slug));
-    return view('post')
+    return view('Post')
         ->with("post", $post);
+});
+
+Route::get('/profile/{user:username}', function (User $user) {
+    return view('Profile')
+    ->with("Profiles", $user);
+});
+
+Route::get('/category', function (Category $category) {
+    return view('category')
+    ->with("posts", $category->posts);
 });
