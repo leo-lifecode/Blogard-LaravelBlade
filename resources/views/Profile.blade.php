@@ -13,7 +13,7 @@
                 </div>
             </main>
             <div id="Aside-Profile"
-                class="sticky top-0 ps-2 pe-4 h-max w-[303px] lg:flex flex-col shrink-0 md:block hidden">
+                class="pt-4 sticky top-0 ps-2 pe-4 h-max w-[303px] lg:flex flex-col shrink-0 md:block hidden">
                 <div class="flex flex-col gap-4 flex-wrap">
                     <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" width="65" class="rounded-3xl">
                     <h1 class="font-medium text-2xl">{{ $Profiles['name'] }}</h1>

@@ -8,30 +8,36 @@
             </a>
         </ul>
         <div class="hidden w-full sm:block">
-            <div class="relative flex w-full ">
-                <div class="absolute m-auto flex h-full w-[40px] items-center justify-center">
-                    <img src="{{asset('img/loupe.png')}}" class="z-10 ms-3" />
+            <form>
+                <div class="flex">
+                    <div class="relative flex w-full items-center">
+                        <div class="absolute m-auto flex h-full w-[40px] items-center justify-center">
+                            <img src="{{asset('img/loupe.png')}}" class="z-10 ms-3" />
+                        </div>
+                        <input type="text" placeholder="Search Blog" name="search"
+                            class="w-full rounded-2xl border border-gray-600 py-[12px] ps-12 pe-[100px]" />
+                        <button type="submit"
+                            class="hover:bg-blue-800 duration-200 absolute right-0 ms-2 rounded-r-lg bg-blue-500 py-[12px] px-5 border border-blue-600 text-white">Search</button>
+                    </div>
                 </div>
-                <input type="text" placeholder="Search Blog"
-                    class="w-full rounded-2xl border border-gray-600 py-[12px] ps-12" />
-            </div>
+            </form>
         </div>
         <div class="flex flex-shrink-0 gap-5 justify-center items-center">
             <div>
                 <a href="" rel="noopener noreferrer">
-                    <div class="flex items-center gap-2 bg-blue-50 hover:bg-blue-300 text-blue-400 hover:text-white py-2 px-4 rounded-xl">
-                        <img src="{{asset('img/edit.png')}}" width="25"  alt="">
-                        <div>Write Your Blog</div>
+                    <div
+                        class="flex items-center gap-2 bg-blue-50 hover:bg-blue-300 text-blue-400 hover:text-white py-2 px-4 rounded-xl">
+                        <img src="{{asset('img/edit.png')}}" width="25" alt="">
+                        <div class="font-semibold">New Post</div>
                     </div>
                 </a>
             </div>
-            <div class="relative ">
-                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="profile" width="35">
-                <div
-                    class="absolute hidden right-0 h-max py-2 px-3 bg-slate-100 shadow-xl text-lg mt-2 w-[130px] rounded-lg">
+            <div class="relative cursor-pointer hover:shadow-lg rounded-full" id="container-profile">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" width="35">
+                <div id="menu-profile" class="hidden absolute right-0 h-max py-2 px-3 bg-slate-100 shadow-xl text-lg mt-2 w-[130px] rounded-lg">
                     <ul>
                         <li>
-                            <a href="">Profile</a>
+                            {{-- <a href="/profile/{{ Auth::user()->username }}">Profile</a> --}}
                         </li>
                         <li class="mt-2 bg-indigo-800 text-white rounded-md">
                             <hr />

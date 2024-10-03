@@ -6,8 +6,9 @@ use App\Models\Post;
 use App\Models\User;
 
 Route::get('/', function () {
-    return view('Home')
-        ->with('posts', Post::all());
+    $posts = Post::Search()->with(['user', 'category'])->latest()->get();
+
+    return view('Home', ['posts' => $posts]);
 });
 
 Route::get('/post/{post:slug}', function (Post $post) {
@@ -15,12 +16,12 @@ Route::get('/post/{post:slug}', function (Post $post) {
         ->with("post", $post);
 });
 
-Route::get('/profile/{user:username}', function (User $user) {
+Route::get('/profile/{user:name}', function (User $user) {
     return view('Profile')
-    ->with("Profiles", $user);
+        ->with("Profiles", $user);
 });
 
-Route::get('/category/{category:name}', function (Category $category) {
+Route::get('/category/{category:slug}', function (Category $category) {
     return view('category')
-    ->with("posts", $category->posts);
+        ->with("posts", $category->posts->load(['user', 'category']));
 });

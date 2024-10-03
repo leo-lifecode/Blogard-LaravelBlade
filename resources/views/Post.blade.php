@@ -1,3 +1,18 @@
+<?php
+
+
+$sluguser = $post['slug'];
+$idslug = $post['id'];
+$image = $post['image'];
+$datePost = $post['created_at']->diffForHumans();
+$username = $post['user']['name'];
+$category = $post['category']['name'];
+$slugcategory = Str::slug($post['category']['slug']);
+$content = $post['content'];
+
+?>
+
+
 <x-layout>
     <div class="flex justify-center bg-slate-50 min-h-screen p-4">
         <div class="w-full md:max-w-[768px] h-max text-black flex-wrap flex flex-col gap-7">
@@ -10,21 +25,19 @@
                         <div id="profile">
                             <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" width="35">
                         </div>
-                        <div class="space-y-1">
-                            <a href="{{'/profile/'. $post->user->username }} " class="hover:underline">
-                                <p class="font-semibold text-md">{{ $post->user->name }}</p>
+                        <div>
+                            <a href="/profile/{{ $username }}" class="hover:underline">
+                                <p class="font-semibold text-md">{{ $username}}</p>
                             </a>
-                            <p class="text-slate-500">{{ $post['created_at']->diffForHumans() }}</p>
+                            <p class="text-slate-500">{{ $datePost }}</p>
                         </div>
                     </div>
                 </div>
                 <article>
                     <div id="Image-post" class="bg-black w-full">
-                        <img src="{{$post['image']}}" alt="profile" class="w-full max-h-[450px] min-h-[300px]" />
+                        <img src="{{ $image }}" alt="profile" class="w-full max-h-[450px] min-h-[300px]" />
                     </div>
-                    <p>
-                        {{ $post['content'] }}
-                    </p>
+                    <p>{{ $content }}</p>
                 </article>
             </main>
 
@@ -34,10 +47,9 @@
                     <div class="space-y-3">
                         <div class="flex gap-2 items-center">
                             <div>
-                                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="profile"
-                                    width="45" />
+                                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" width="45" />
                             </div>
-                            <div class="">
+                            <div>
                                 <p class="font-semibold text-md">author</p>
                                 <p class="text-slate-500">dd-mm-yyyy</p>
                             </div>
@@ -46,17 +58,13 @@
                     </div>
                 </div>
 
-
                 <div class="w-full">
                     <p class="font-semibold">Leave Comment</p>
-                    <textarea class="w-full h-[200px] border border-black rounded-md shadow-md p-2"
-                        placeholder="Share Your Opinion About This Post">
+                    <textarea class="w-full h-[200px] border border-black rounded-md shadow-md p-2"  placeholder="Share Your Opinion About This Post">
                     </textarea>
-                    <button
-                        class="w-full bg-black text-white py-1 text-lg rounded-md hover:bg-slate-900">Submit</button>
+                    <button class="w-full bg-black text-white py-1 text-lg rounded-md hover:bg-slate-900">Submit</button>
                 </div>
             </div>
-
         </div>
     </div>
 </x-layout>
