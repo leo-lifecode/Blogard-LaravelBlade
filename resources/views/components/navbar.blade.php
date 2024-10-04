@@ -34,14 +34,14 @@
             </div>
             <div class="relative cursor-pointer hover:shadow-lg rounded-full" id="container-profile">
                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" width="35">
-                <div id="menu-profile" class="hidden absolute right-0 h-max py-2 px-3 bg-slate-100 shadow-xl text-lg mt-2 w-[130px] rounded-lg">
+                <div id="menu-profile" class="hidden z-[9999] absolute right-0 h-max py-2 px-3 bg-slate-100 shadow-xl text-lg mt-2 w-[130px] rounded-lg">
                     <ul>
                         <li>
                             {{-- <a href="/profile/{{ Auth::user()->username }}">Profile</a> --}}
                         </li>
                         <li class="mt-2 bg-indigo-800 text-white rounded-md">
+                            <a href="/login">
                             <hr />
-                            <a href="">
                                 <button class="py-1 px-2">Login</button>
                             </a>
                         </li>
