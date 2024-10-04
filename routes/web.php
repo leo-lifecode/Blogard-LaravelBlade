@@ -6,7 +6,7 @@ use App\Models\Post;
 use App\Models\User;
 
 Route::get('/', function () {
-    $posts = Post::Search()->with(['user', 'category'])->latest()->get();
+    $posts = Post::Search()->with(['user', 'category'])->latest()->paginate(9);
 
     return view('Home', ['posts' => $posts]);
 });
