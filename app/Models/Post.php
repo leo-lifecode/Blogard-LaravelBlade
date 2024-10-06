@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Post extends Model
 {
     use HasFactory;
-    protected $table = 'posts'; // menentukan tabel yang digunakan 
+    protected $table = 'posts';
     protected $fillable = ['title', 'slug', 'author', 'image', 'content'];
     public function user(): BelongsTo
     {
@@ -20,9 +20,13 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    
+
     public function scopeSearch(Builder $query): void
     {
-        $query->where('title' , 'like' , '%' . request('search') . '%');
+        $query->where('title', 'like', '%' . request('search') . '%');
+    }
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
     }
 }

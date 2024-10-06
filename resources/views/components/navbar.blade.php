@@ -1,4 +1,5 @@
-<div class="relative flex w-full justify-center">
+
+    <div class="relative flex w-full justify-center">
     <div class="flex w-full items-center justify-between gap-10 bg-primary px-3 py-6 md:px-[20px] lg:px-[100px]">
         <ul class="flex flex-shrink-0 items-center gap-10">
             <a href="/">
@@ -34,17 +35,32 @@
             </div>
             <div class="relative cursor-pointer hover:shadow-lg rounded-full" id="container-profile">
                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" width="35">
-                <div id="menu-profile" class="hidden z-[9999] absolute right-0 h-max py-2 px-3 bg-slate-100 shadow-xl text-lg mt-2 w-[130px] rounded-lg">
+                <div id="menu-profile"
+                    class="hidden z-[9999] absolute right-0 h-max py-2 px-3 bg-slate-100 shadow-xl text-lg mt-2 w-[240px] rounded-lg overflow-y-auto">
                     <ul>
+                        <li class="flex gap-2 hover:bg-slate-200 rounded-md p-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" aria-label="Profile"><circle cx="12" cy="7" r="4.5" stroke="currentColor"></circle><path stroke="currentColor" stroke-linecap="round" d="M3.5 21.5v-4.342C3.5 15.414 7.306 14 12 14s8.5 1.414 8.5 3.158V21.5"></path></svg>
+                            <a href="/profile/{{ auth()->user()->username }}" class="w-full">Profile</a>
+                        </li>
                         <li>
-                            {{-- <a href="/profile/{{ Auth::user()->username }}">Profile</a> --}}
+                            <div class="border-b border-slate-300 mt-2"></div>
                         </li>
-                        <li class="mt-2 bg-indigo-800 text-white rounded-md">
+                        @auth
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <li class="mt-2 text-white rounded-md bg-black hover:bg-slate-900 w-max">
+                                    <hr />
+                                    <button class="py-1 px-3 ">Logout</button>
+                                </li>
+                            </form>  
+                        @else
                             <a href="/login">
-                            <hr />
-                                <button class="py-1 px-2">Login</button>
+                                <li class="mt-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 w-max">
+                                    <hr />
+                                    <button class="py-1 px-3">Login</button>
+                                </li>
                             </a>
-                        </li>
+                        @endauth
                     </ul>
                 </div>
             </div>

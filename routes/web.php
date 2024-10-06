@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Models\Category;
@@ -18,15 +19,28 @@ Route::get('/post/{post:slug}', function (Post $post) {
         ->with("post", $post);
 });
 
-Route::get('/profile/{user:name}', function (User $user) {
+Route::get('/profile/{user:username}', function (User $user) {
     return view('Profile')
         ->with("Profiles", $user);
 });
 
 Route::get('/category/{category:slug}', function (Category $category) {
     return view('category')
-        ->with("posts", $category->posts->load(['user', 'category']));
+        ->with("posts", $category->posts->load(['user', 'category']))
+        ->with(["category" => $category]);
 });
 
-Route::get('/login', [LoginController::class, 'index']);
-Route::get('/register', [RegisterController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
+
+Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
+
+Route::get('/dashboard', function(){
+    return view('dashboard.index');
+})->middleware('auth');
+
+
+Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');

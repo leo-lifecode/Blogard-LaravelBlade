@@ -30,25 +30,25 @@
                     <h1>twitter</h1>
                 </div>
             </div>
-            <form action="" class="w-full space-y-4">
+            <form action="/login" method="POST" class="w-full space-y-4">
+                @csrf
                 <div class="flex flex-col gap-1">
                     <label for="email" class="text-lg font-semibold">Email address</label>
-                    <input type="email" class="px-2 py-3 rounded-md border border-gray-300 bg-gray-200"
-                        placeholder="Enter your email" id="email" aria-describedby="emailHelp">
+                    <input value="{{ old('email') }}" name="email" type="email" class="px-2 py-3 rounded-md border border-gray-300 bg-gray-200" placeholder="Enter your email" id="email" aria-describedby="emailHelp">
                     <div class="mb-2 hidden">We'll never share your email with anyone else.</div>
                 </div>
                 <div class="flex flex-col gap-1">
                     <label for="password" class="text-lg font-semibold">Password</label>
-                    <input type="password" class="px-2 py-3 rounded-md border border-gray-300 bg-gray-200"
-                        placeholder="Enter your password" id="password">
+                    <input type="password" name="password" class="px-2 py-3 rounded-md border border-gray-300 bg-gray-200" placeholder="Enter your password" id="password">
                 </div>
+                @session('loginError')
+                     <div class="text-red-500 text-[14px]">{{ session('loginError') }}</div>
+                @endsession
                 <div class="mt-4">
-                    <button type="submit"
-                        class="text-center w-full bg-slate-900 text-slate-50 py-3 rounded-lg hover:bg-slate-700 duration-150">Login</button>
+                    <button type="submit" class="text-center w-full bg-slate-900 text-slate-50 py-3 rounded-lg hover:bg-slate-700 duration-150">Login</button>
                 </div>
                 <div class="text-center mt-[40px] text-slate-400">
-                    <p>Don't have an account? <a href="/register"
-                            class="underline hover:text-black duration-200">Register</a></p>
+                    <p>Don't have an account? <a href="/register" class="underline hover:text-black duration-200">Register</a></p>
                 </div>
             </form>
         </div>
