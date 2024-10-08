@@ -1,9 +1,10 @@
 @extends('layout.layoutDashboard')
 @section('content')
+@vite('resources/css/base.css')
 <div class="container bg-white mt-[20px] p-5 rounded-lg">
     <div class="flex justify-between items-center">
         <h1 class="text-xl font-semibold">Posts Management</h1>
-        <a href="#" class="btn btn-add">+ Add New Post</a>
+        <a href="/dashboard/posts/create" class="btn btn-add">+ Add New Post</a>
     </div>
 
     <div class="table-container">

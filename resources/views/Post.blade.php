@@ -14,6 +14,8 @@ $content = $post['content'];
 
 
 <x-layout>
+    @vite('resources/css/base.css')
+
     <div class="flex justify-center bg-slate-50 min-h-screen p-4">
         <div class="w-full md:max-w-[768px] h-max text-black flex-wrap flex flex-col gap-7">
             <main class="bg-white">
@@ -37,7 +39,7 @@ $content = $post['content'];
                     <div id="Image-post" class="bg-black w-full">
                         <img src="{{ $image }}" alt="profile" class="w-full max-h-[450px] min-h-[300px]" />
                     </div>
-                    <p>{{ $content }}</p>
+                    <p>{!! $content !!}</p>
                 </article>
             </main>
 
@@ -60,9 +62,11 @@ $content = $post['content'];
 
                 <div class="w-full">
                     <p class="font-semibold">Leave Comment</p>
-                    <textarea class="w-full h-[200px] border border-black rounded-md shadow-md p-2"  placeholder="Share Your Opinion About This Post">
+                    <textarea class="w-full h-[200px] border border-black rounded-md shadow-md p-2"
+                        placeholder="Share Your Opinion About This Post">
                     </textarea>
-                    <button class="w-full bg-black text-white py-1 text-lg rounded-md hover:bg-slate-900">Submit</button>
+                    <button
+                        class="w-full bg-black text-white py-1 text-lg rounded-md hover:bg-slate-900">Submit</button>
                 </div>
             </div>
         </div>

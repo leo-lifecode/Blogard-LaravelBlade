@@ -11,7 +11,8 @@ class Post extends Model
 {
     use HasFactory;
     protected $table = 'posts';
-    protected $fillable = ['title', 'slug', 'author', 'image', 'content'];
+    // protected $fillable = ['title', 'slug', 'author', 'image', 'content'];
+    protected $guarded = ['id'];
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -29,4 +30,5 @@ class Post extends Model
     {
         return 'slug';
     }
+    
 }

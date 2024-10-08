@@ -1,4 +1,6 @@
+
 <x-layout>
+    @vite('resources/css/base.css')
     <div class="max-w-[1400px] m-auto block min-h-screen bg-slate-50">
         <div class="flex justify-evenly bg-slate-50 h-full">
             <main class="max-w-[728px] flex flex-col">

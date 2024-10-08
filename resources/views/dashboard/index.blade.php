@@ -1,5 +1,6 @@
 @extends('layout.layoutDashboard')
 @section('content')
+@vite('resources/css/base.css')
 <!-- Dashboard Cards -->
 <div class="cards">
     <div class="card">

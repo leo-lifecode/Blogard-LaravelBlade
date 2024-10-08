@@ -15,8 +15,9 @@ $content = $post['content'];
 @extends('layout.layoutDashboard')
 
 @section('content')
-<div class="flex justify-center bg-slate-50 min-h-screen p-4 mt-[20px] rounded-xl">
-    <div class="w-full md:max-w-[768px] h-max text-black flex-wrap flex flex-col gap-7">
+@vite('resources/css/base.css')
+<div class="flex justify-center bg-white min-h-max p-4 mt-[20px] rounded-xl">
+    <div class="w-full h-max text-black flex-wrap flex flex-col gap-7">
         <main class="bg-white">
             <div class="text-black mb-2 text-2xl font-bold">
                 <h1 class="capitalize">{{ $post['title'] }}</h1>
@@ -38,7 +39,7 @@ $content = $post['content'];
                 <div id="Image-post" class="bg-black w-full">
                     <img src="{{ $image }}" alt="profile" class="w-full max-h-[450px] min-h-[300px]" />
                 </div>
-                <p>{{ $content }}</p>
+                <p>{!! $content !!}</p>
             </article>
         </main>
 
