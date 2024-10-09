@@ -6,7 +6,11 @@
         <h1 class="text-xl font-semibold">Posts Management</h1>
         <a href="/dashboard/posts/create" class="btn btn-add">+ Add New Post</a>
     </div>
-
+    @if (session()->has('success'))
+    <div class="text-message font-medium text-md bg-yellow-100 p-2 rounded-lg">
+        <p>{{ session('success') }}</p>
+    </div>
+    @endif  
     <div class="table-container">
         <table>
             <thead>
@@ -27,10 +31,14 @@
                     <td>{{ $post->user->username }}</td>
                     <td>{{ $post->category->name }}</td>
                     <td>{{ $post->created_at->translatedFormat('F d, Y')}}</td>
-                    <td>
+                    <td class="flex">
                         <a href="/dashboard/posts/{{$post->slug}}" class="btn btn-edit">Show</a>
-                        <a href="#" class="btn btn-edit">Edit</a>
-                        <a href="#" class="btn btn-delete">Delete</a>
+                        <a href="/dashboard/posts/{{$post->slug}}/edit" class="btn btn-edit">Edit</a>
+                        <form action="/dashboard/posts/{{$post->slug}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-delete" onclick="confirm('Are you sure delete post?')">Delete</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
