@@ -53,11 +53,6 @@ $dateMonth = $date->translatedFormat('F d, Y');
             class="fas fa-chart-bar"></i> Categories</a>
       </li>
       <li>
-        <a href="/dashboard/settings"
-          class="{{ Request::is('dashboard/settings*') ? 'text-purple-950' : 'text-black'}}"><i class="fas fa-cogs"></i>
-          Settings</a>
-      </li>
-      <li>
         <form action="/logout" method="POST" class="py-[15px]">
           @csrf
           <button

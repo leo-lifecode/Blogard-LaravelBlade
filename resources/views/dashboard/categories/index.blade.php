@@ -31,7 +31,7 @@
                         <form action="/dashboard/category/{{$category->slug}}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-delete" onclick="confirm('Are you sure delete post?')">Delete</button>
+                            <button type="submit" class="btn btn-delete" onclick="confirm('Are you sure delete category?')">Delete</button>
                         </form>
                     </td>
                 </tr>
