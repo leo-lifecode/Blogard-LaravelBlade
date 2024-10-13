@@ -24,7 +24,7 @@ class PostFactory extends Factory
             'title' => fake()->sentence(),
             'user_id' => User::factory(),
             'category_id' => Category::factory(),
-            'image' => fake()->imageUrl(),
+            'image' => 'https://source.unsplash.com/1200/400/?' . fake()->word(),
             'content' => fake()->text(),
         ];
     }

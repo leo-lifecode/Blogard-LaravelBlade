@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('slug', 255)->unique();
             $table->string('image', 200)->nullable();
             $table->string('content', 500)->nullable();
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -26,6 +30,13 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('posts', function (Blueprint $table) {
+            $table->dropForeign(['category_id']);
+            $table->dropColumn('category_id');
+            $table->dropForeign(['user_id']);
+            $table->dropColumn('user_id');
+        });
+
         Schema::dropIfExists('posts');
     }
 };

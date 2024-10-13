@@ -11,14 +11,18 @@ class Category extends Model
     use HasFactory;
     protected $table = "categories"; // menentukan tabel yang digunakan
 
-    protected $fillable = [
-        'name',
-        'slug',
-    ];
+    public $timestamps = false;
+
+    protected $fillable = ['name', 'slug'];
 
 
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
+    }
+    
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
     }
 }

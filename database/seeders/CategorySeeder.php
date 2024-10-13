@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CategorySeeder extends Seeder
 {
@@ -13,6 +14,30 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        Category::factory(3)->create();
+        DB::table('categories')->insert([
+            'name' => 'Programming',
+            'slug' => Str::slug('programming'),
+
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'News',
+            'slug' => Str::slug('news'),
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Technology',
+            'slug' => Str::slug('technology'),
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Society',
+            'slug' => Str::slug('society'),
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Healthy',
+            'slug' => Str::slug('healthy'),
+        ]);
     }
 }

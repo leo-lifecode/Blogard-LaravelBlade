@@ -37,7 +37,7 @@ $content = $post['content'];
             </div>
             <article>
                 <div id="Image-post" class="bg-black w-full">
-                    <img src="{{ $image }}" alt="profile" class="w-full max-h-[450px] min-h-[300px]" />
+                    <img src="{{ asset('storage/' . $image) }}" alt="profile" class="w-full max-h-[450px] min-h-[300px]" />
                 </div>
                 <p>{!! $content !!}</p>
             </article>

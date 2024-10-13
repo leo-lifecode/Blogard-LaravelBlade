@@ -18,7 +18,7 @@ $datePost = $post['created_at']->diffForHumans();
             <p class="mt-2 text-slate-400 lg:text-lg">{{ $datePost }}</p>
         </div>
         <div class="min-w-[130px] max-w-[160px]  flex items-center rounded-xl">
-            <img class="rounded-xl shadow-xl min-w-[130px] max-w-[160px]" src={{ $image }} />
+            <img class="rounded-xl shadow-xl min-w-[130px] max-w-[160px]" src={{ asset('storage/' . $image) }} />
         </div>
     </div>
 </a>

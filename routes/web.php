@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardCategoryController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -10,8 +11,7 @@ use App\Models\User;
 
 Route::get('/', function () {
     $posts = Post::Search()->with(['user', 'category'])->latest()->paginate(9);
-
-    return view('Home', ['posts' => $posts]);
+    return view('Home', ['posts' => $posts, 'categories' => Category::all()]);
 });
 
 Route::get('/post/{post:slug}', function (Post $post) {
@@ -27,12 +27,12 @@ Route::get('/profile/{user:username}', function (User $user) {
 Route::get('/category/{category:slug}', function (Category $category) {
     return view('category')
         ->with("posts", $category->posts->load(['user', 'category']))
-        ->with(["category" => $category]);
+        ->with(["category" => $category])
+        ->with("categories", Category::all());
 });
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
-
 Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
@@ -44,3 +44,4 @@ Route::get('/dashboard', function(){
 
 
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
+Route::resource('/dashboard/category', DashboardCategoryController::class)->except(['show'])->middleware('auth');

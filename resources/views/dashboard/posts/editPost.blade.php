@@ -4,9 +4,10 @@
 
 <div class="flex justify-center bg-white min-h-max p-4 mt-[20px] rounded-xl">
     <div class="w-full h-max text-black flex-wrap flex flex-col gap-4">
-        <h1 class="text-2xl font-semibold">Buat Post</h1>
+        <h1 class="text-2xl font-semibold">Edit Post</h1>
         <main class="bg-white text-black">
-            <form action="/dashboard/posts/{{ $post->slug }}" method="POST" class="w-full">
+            <form action="/dashboard/posts/{{ $post->slug }}" method="POST" class="w-full"
+                enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
                 <div class="-mx-4">
@@ -14,7 +15,8 @@
                         <div class="mb-10 items-center grid grid-cols-1 sm:grid-cols-2 grid-rows-1">
                             <label for="title" class="text-xl font-medium">Title</label>
                             <input name="title" id="title" type="text" placeholder="title your blog"
-                                class="w-full bg-transparent rounded-md py-[15px] px-2" value="{{ old('title', $post->title) }}" />
+                                class="w-full bg-transparent rounded-md py-[15px] px-2"
+                                value="{{ old('title', $post->title) }}" />
                             @error('title')
                             <div class="text-red-500"> {{ $message }}</div>
                             @enderror
@@ -25,7 +27,8 @@
                         <div class="mb-10 items-center grid grid-cols-1 sm:grid-cols-2 grid-rows-1">
                             <label for="slug" class="text-xl font-medium">Slug</label>
                             <input name="slug" id="slug" type="text" placeholder="Slug your blog"
-                                class="w-full bg-transparent rounded-md py-[15px] px-2" value="{{ old('slug', $post->slug) }}" />
+                                class="w-full bg-transparent rounded-md py-[15px] px-2"
+                                value="{{ old('slug', $post->slug) }}" />
                             @error('slug')
                             <div class="text-red-500"> {{ $message }}</div>
                             @enderror
@@ -33,13 +36,16 @@
                     </div>
 
                     <div class="px-4 max-sm:w-[302px] sm:max-w-screen-md ">
+                        <input type="hidden" name="oldImage" value="{{ $post->image }}">
+                        <img src="{{ asset('storage/' . $post->image) }}" class="w-[350px] h-[250px]" id="file-preview">
                         <div class="mb-10 items-center grid grid-cols-1 sm:grid-cols-2 grid-rows-1">
-                            <label for="image" class="text-xl font-medium">Image</label>
+                            {{-- <label for="image" class="text-xl font-medium">Image</label>
                             <input name="image" id="image" type="text" placeholder="Link Image your blog"
-                                class="w-full bg-transparent rounded-md py-[15px] px-2" value="{{ old('image', $post->image) }}" />
+                                class="w-full bg-transparent rounded-md py-[15px] px-2"
+                                value="{{ old('image', $post->image) }}" />
                             @error('image')
                             <div class="text-red-500"> {{ $message }}</div>
-                            @enderror
+                            @enderror --}}
                             {{-- <label class="block">
                                 <span class="sr-only">Choose profile photo</span>
                                 <input type="file" class="block w-full text-sm text-slate-500
@@ -50,6 +56,20 @@
                                   hover:file:bg-violet-100
                                 " />
                             </label> --}}
+                            <label for="image" class="text-xl font-medium">Image</label>
+                            <label class="block">
+                                <span class="sr-only">Choose profile photo</span>
+                                <input id="file-input" name="image" type="file" class="block w-full text-sm text-slate-500
+                                  file:mr-4 file:py-2 file:px-4
+                                  file:rounded-full file:border-0
+                                  file:text-sm file:font-semibold
+                                  file:bg-violet-50 file:text-violet-700
+                                  hover:file:bg-violet-100
+                                " />
+                            </label>
+                            @error('image')
+                            <div class="text-red-500"> {{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
 
@@ -86,7 +106,8 @@
                             </label>
                             <div class="max-w-screen-md pt-4 ">
                                 <trix-toolbar id="my_toolbar"></trix-toolbar>
-                                <input id="content" type="hidden" name="content" value="{{ old('content', $post->content) }}">
+                                <input id="content" type="hidden" name="content"
+                                    value="{{ old('content', $post->content) }}">
                                 <div class="more-stuff-inbetween"></div>
                                 <trix-editor toolbar="my_toolbar" input="content"></trix-editor>
                             </div>
@@ -97,7 +118,10 @@
                     </div>
                     <div class="w-full px-4">
                         <button type="submit"
-                            class="px-4 py-2 bg-stone-700 text-white rounded-xl hover:bg-stone-500 cursor-pointer">Submit</button>
+                            class="px-4 py-2 bg-stone-700 text-md text-white rounded-xl hover:bg-stone-500 cursor-pointer">Submit</button>
+                        <a href="/dashboard/posts" class="no-underline px-4 py-2 bg-stone-700 text-white rounded-xl hover:bg-stone-500
+                            cursor-pointer">Cancel
+                        </a>
                     </div>
                 </div>
             </form>
