@@ -9,7 +9,6 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Models\User;
-use GuzzleHttp\Promise\Create;
 
 Route::get('/', function () {
     $posts = Post::Search()->with(['user', 'category'])->latest()->paginate(9);
@@ -46,5 +45,5 @@ Route::get('/dashboard', function () {
 
 
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
-Route::resource('/dashboard/users', DashboardUserController::class)->except(['show', 'create', 'store', 'edit', 'update'])->middleware('auth');
+Route::resource('/dashboard/users', DashboardUserController::class)->except(['show', 'create', 'store'])->middleware('auth');
 Route::resource('/dashboard/category', DashboardCategoryController::class)->except(['show'])->middleware('auth');

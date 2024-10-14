@@ -76,7 +76,7 @@ $dateMonth = $date->translatedFormat('F d, Y');
       </div>
       <div class="user-info">
         <span class="user-name">{{auth()->user()->username}}</span>
-        <img src="{{ auth()->user()->avatar }}" class="user-avatar" />
+        <img src="{{ asset('storage/' . auth()->user()->avatar) }}" width="50" height="75" class="user-avatar rounded-full" />
       </div>
     </header>
 

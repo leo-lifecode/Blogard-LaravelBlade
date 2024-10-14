@@ -15,9 +15,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call([CategorySeeder::class, UserSeeder::class]);
-        Post::factory(20)
-            ->recycle([Category::all(), User::all()])
-            ->create();
+        // $this->call([CategorySeeder::class, UserSeeder::class]);
+        // Post::factory(20)
+        //     ->recycle([Category::all(), User::all()])
+        //     ->create();
+
+        User::insert([
+            'name' => 'user',
+            'username' => 'userbaru',
+            'email' => 'userbaru@gmail.com',
+            'password' => bcrypt('user12345'),
+            'is_admin' => false,
+            'avatar' => 'https://via.placeholder.com/50',
+            'bio' => 'user baru dibuat',
+            'email_verified_at' => now(),]);
     }
 }

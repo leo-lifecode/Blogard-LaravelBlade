@@ -25,12 +25,14 @@
                 @foreach ($users as $user)
                 <tr>
                     <td>
-                        <img class="rounded-full w-[50px]" src="{{ $user->avatar }}">
+                        <img class="rounded-full w-[50px]"
+                            src="{{ $user->avatar ? asset('storage/' . $user->avatar) : 'https://cdn-icons-png.flaticon.com/512/149/149071.png' }}">
                     </td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->is_admin == 1 ? 'Admin' : 'User' }}</td>
                     <td>{{ $user->posts->count() }}</td>
                     <td class="flex">
+                        <a href="/dashboard/users/{{$user->id}}/edit" class="btn btn-edit">Edit</a>
                         <form action="/dashboard/users/{{$user->id}}" method="user">
                             @csrf
                             @method('DELETE')
