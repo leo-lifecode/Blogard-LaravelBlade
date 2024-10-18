@@ -75,8 +75,8 @@ $dateMonth = $date->translatedFormat('F d, Y');
         </div>
       </div>
       <div class="user-info">
-        <span class="user-name">{{auth()->user()->username}}</span>
-        <img src="{{ asset('storage/' . auth()->user()->avatar) }}" width="50" height="75" class="user-avatar rounded-full" />
+        <span class="user-name hidden sm:block">{{auth()->user()->username}}</span>
+        <img src="{{ auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : 'https://cdn-icons-png.flaticon.com/512/149/149071.png' }} " width="50" height="50" class="user-avatar rounded-full" />
       </div>
     </header>
 

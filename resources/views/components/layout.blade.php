@@ -34,7 +34,7 @@
 
 </style>
 
-<body class="min-h-screen d-flex flex-col font-sans">
+<body class="min-h-screen d-flex flex-col font-sans p-2">
     <x-navbar />
     {{ $slot }}
 

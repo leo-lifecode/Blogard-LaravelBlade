@@ -3,14 +3,21 @@
 @vite('resources/css/base.css')
 <div class="container bg-white mt-[20px] p-5 rounded-lg">
     <div class="flex justify-between items-center">
-        <h1 class="text-xl font-semibold">Posts Management</h1>
-        <a href="/dashboard/posts/create" class="btn btn-add">+ Add New Post</a>
+        <h1 class="text-[14px] sm:text-xl font-semibold">Posts Management</h1>
+        <a href="/dashboard/posts/create" class="btn btn-add max-sm:text-[12px]">+ Add New Post</a>
     </div>
+    <form>
+        <div class="max-w-[300px] w-full flex gap-2">
+            <input type="text" name="search" id="search" placeholder="Search Posts....."
+                class="w-full rounded-lg px-4 py-2 border border-blue-300" value="{{ request('search') }}">
+            <button class="py-2 px-4 rounded-lg bg-yellow-100"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+    </form>
     @if (session()->has('success'))
     <div class="text-message font-medium text-md bg-yellow-100 p-2 rounded-lg">
         <p>{{ session('success') }}</p>
     </div>
-    @endif  
+    @endif
     <div class="table-container">
         <table>
             <thead>
@@ -37,7 +44,8 @@
                         <form action="/dashboard/posts/{{$post->slug}}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-delete" onclick="confirm('Are you sure delete post?')">Delete</button>
+                            <button type="submit" class="btn btn-delete"
+                                onclick="confirm('Are you sure delete post?')">Delete</button>
                         </form>
                     </td>
                 </tr>

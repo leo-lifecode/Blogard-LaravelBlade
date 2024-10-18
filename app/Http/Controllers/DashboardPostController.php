@@ -16,7 +16,7 @@ class DashboardPostController extends Controller
      */
     public function index()
     {
-        $posts =  Post::where('user_id', Auth::user()->id)->get();
+        $posts =  Post::Search()->where('user_id', Auth::user()->id)->get();
         return view('dashboard.posts.index', ['posts' => $posts]);
     }
 
@@ -87,11 +87,10 @@ class DashboardPostController extends Controller
 
 
         if ($request->file('image')) {
-            if($request->oldImage) {
+            if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
             $validatedData['image'] = $request->file('image')->store('post-images');
-            
         }
 
         $validatedData['user_id'] = auth()->user()->id;

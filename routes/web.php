@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardCategoryController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,14 @@ Route::get('/profile/{user:username}', function (User $user) {
     return view('Profile')
         ->with("Profiles", $user);
 });
+
+Route::get('/profile/{user:username}/settings', function (User $user) {
+    return view('editProfile', [
+        'Profiles' => $user
+    ]);
+});
+
+Route::post('/profile/{user:username}/settings/edit', [ProfileController::class, 'edit']);
 
 Route::get('/category/{category:slug}', function (Category $category) {
     return view('category')

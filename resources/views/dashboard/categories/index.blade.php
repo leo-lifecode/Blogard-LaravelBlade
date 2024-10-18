@@ -4,8 +4,8 @@
 
 <div class="container bg-white mt-[20px] p-5 rounded-lg">
     <div class="flex justify-between items-center">
-        <h1 class="text-xl font-semibold">Category Management</h1>
-        <a href="/dashboard/category/create" class="btn btn-add">+ Add New Category</a>
+        <h1 class="text-[14px] sm:text-xl  font-semibold">Category Management</h1>
+        <a href="/dashboard/category/create" class="btn btn-add text-[12px]">+ Add New Category</a>
     </div>
     @if (session()->has('success'))
     <div class="text-message font-medium text-md bg-yellow-100 p-2 rounded-lg">

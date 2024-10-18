@@ -132,6 +132,7 @@ ul {
     cursor: pointer;
     background: none;
     border: none;
+    margin: 20px;
 }
 
 header {
@@ -277,6 +278,23 @@ table tr:hover {
         margin: 20px auto;
         text-align: center;
     }
+    header {
+        padding: 8px;
+    }
+    .header-title {
+        gap: 5px;
+    }
+    .header-title h1 {
+        font-size: 16px;
+        font-weight: 700;
+    }
+    .btn-add{
+        padding: 5px 10px;
+    }
+    .menu-btn {
+        margin: 8px;
+        display: block;
+    }
 }
 
 @media (max-width: 1200px) {
@@ -291,9 +309,5 @@ table tr:hover {
     }
     .close-btn {
         display: block !important;
-    }
-    .menu-btn {
-        display: block;
-        margin: 20px;
     }
 }
