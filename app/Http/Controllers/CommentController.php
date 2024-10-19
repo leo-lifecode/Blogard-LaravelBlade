@@ -2,22 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function store(Post $post, Request $request)
+    public function store(Request $request)
     {
-        $rules = [
-            'content' => 'requiredmin:5|max:250',
-            'post_id' => 'required|exists:posts,id',
-        ];
-        $validatedData = $request->validate($rules);
+        $validatedData = $request->validate([
+            'post_id' => 'required|exists:posts,id', // Pastikan post_id valid
+            'content' => 'required|min:5|max:250',
+        ]);
+
+        // Tambahkan user_id dari pengguna yang sedang login
         $validatedData['user_id'] = auth()->user()->id;
-        
-        $post->comments()->create($validatedData);
-        
+
+        Comment::create($validatedData);
+
+
         return redirect()->back()->with('success', 'Comment has been added!');
     }
 }
