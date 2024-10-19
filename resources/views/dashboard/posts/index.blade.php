@@ -14,7 +14,7 @@
         </div>
     </form>
     @if (session()->has('success'))
-    <div class="text-message font-medium text-md bg-yellow-100 p-2 rounded-lg">
+    <div class="text-message font-medium text-md bg-yellow-100 p-2 rounded-lg my-[20px]">
         <p>{{ session('success') }}</p>
     </div>
     @endif

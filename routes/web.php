@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardCategoryController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardUserController;
@@ -7,52 +8,65 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Models\Category;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Models\User;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
-    $posts = Post::Search()->with(['user', 'category'])->latest()->paginate(9);
-    return view('Home', ['posts' => $posts, 'categories' => Category::all()]);
+    $posts = Post::search()->with(['user', 'category'])->latest()->paginate(9);
+    return view('home', ['posts' => $posts, 'categories' => Category::all()]);
 });
 
 Route::get('/post/{post:slug}', function (Post $post) {
-    return view('Post')
-        ->with("post", $post);
+    return view('post', [
+        'post' => $post,
+        'comments' => Comment::with(['user'])->where('post_id', $post->id)->get()
+    ]);
+});
+
+Route::get('/category/{category:slug}', function (Category $category) {
+    return view('category', [
+        'posts' => $category->posts->load(['user', 'category']),
+        'category' => $category,
+        'categories' => Category::all()
+    ]);
 });
 
 Route::get('/profile/{user:username}', function (User $user) {
-    return view('Profile')
-        ->with("Profiles", $user);
+    return view('profile', ['profiles' => $user]);
 });
 
 Route::get('/profile/{user:username}/settings', function (User $user) {
-    return view('editProfile', [
-        'Profiles' => $user
-    ]);
+    return view('editProfile', ['profiles' => $user]);
 });
 
 Route::post('/profile/{user:username}/settings/edit', [ProfileController::class, 'edit']);
 
-Route::get('/category/{category:slug}', function (Category $category) {
-    return view('category')
-        ->with("posts", $category->posts->load(['user', 'category']))
-        ->with(["category" => $category])
-        ->with("categories", Category::all());
+Route::get('/writeblog', function () {
+    return view('writeBlog', ['categories' => Category::all()]);
 });
 
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'authenticate']);
-Route::post('/logout', [LoginController::class, 'logout']);
-
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']);
-
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-})->middleware('auth');
+Route::post('/writeblog/writecreate', [DashboardPostController::class, 'store']);
+Route::post('/comment/commentcreate', [CommentController::class, 'store']);
 
 
-Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
-Route::resource('/dashboard/users', DashboardUserController::class)->except(['show', 'create', 'store'])->middleware('auth');
-Route::resource('/dashboard/category', DashboardCategoryController::class)->except(['show'])->middleware('auth');
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'authenticate']);
+    Route::get('/register', [RegisterController::class, 'index']);
+    Route::post('/register', [RegisterController::class, 'store']);
+});
+
+Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard.index');
+    });
+
+    Route::resource('/dashboard/posts', DashboardPostController::class);
+    Route::resource('/dashboard/users', DashboardUserController::class)->except(['show', 'create', 'store']);
+    Route::resource('/dashboard/category', DashboardCategoryController::class)->except(['show']);
+});

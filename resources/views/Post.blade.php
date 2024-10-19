@@ -9,7 +9,6 @@ $username = $post['user']['username'];
 $category = $post['category']['name'];
 $slugcategory = Str::slug($post['category']['slug']);
 $content = $post['content'];
-
 ?>
 
 
@@ -37,7 +36,8 @@ $content = $post['content'];
                 </div>
                 <article>
                     <div id="Image-post" class="bg-black w-full">
-                        <img src="{{ asset('storage/' . $image) }}" alt="profile" class="w-full max-h-[450px] min-h-[300px]" />
+                        <img src="{{ asset('storage/' . $image) }}" alt="profile"
+                            class="w-full max-h-[450px] min-h-[300px]" />
                     </div>
                     <p>{!! $content !!}</p>
                 </article>
@@ -47,26 +47,34 @@ $content = $post['content'];
                 <div class="space-y-4">
                     <p class="font-semibold">Comments</p>
                     <div class="space-y-3">
+                        @foreach ($comments as $comment)
                         <div class="flex gap-2 items-center">
                             <div>
                                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" width="45" />
                             </div>
                             <div>
-                                <p class="font-semibold text-md">author</p>
-                                <p class="text-slate-500">dd-mm-yyyy</p>
+                                <p class="font-semibold text-md">{{ $comment['user']['username'] }}</p>
+                                <p class="text-slate-500">{{ $comment['created_at'] ?
+                                    $comment['created_at']->diffForHumans() : 'null' }}</p>
                             </div>
                         </div>
-                        <p class="ms-6">this comment will be forgiven</p>
+                        <p>{{$comment['content']}}</p>
+                        @endforeach
                     </div>
                 </div>
 
                 <div class="w-full">
                     <p class="font-semibold">Leave Comment</p>
-                    <textarea class="w-full h-[200px] border border-black rounded-md shadow-md p-2"
-                        placeholder="Share Your Opinion About This Post">
+                    <form action="/comment/commentcreate" method="POST">
+                        @csrf
+                        <textarea name="content"
+                            class="resize-none p-2 w-full h-[200px] border border-black rounded-md shadow-md"
+                            placeholder="Share Your Opinion About This Post">
                     </textarea>
-                    <button
-                        class="w-full bg-black text-white py-1 text-lg rounded-md hover:bg-slate-900">Submit</button>
+                    <input type="hidden" name="post_id" value="{{ $post['id'] }}">
+                        <button type="submit"
+                            class="w-full bg-black text-white py-1 text-lg rounded-md hover:bg-slate-900">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>

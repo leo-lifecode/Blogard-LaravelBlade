@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -39,14 +40,20 @@ class DashboardPostController extends Controller
             'title' => 'required|unique:posts|max:255|min:5',
             'content' => 'required',
             'category_id' => 'required',
-            'slug' => 'required|unique:posts',
             'image' => 'image|file',
         ]);
 
         $validatedData['user_id'] = auth()->user()->id;
-        $validatedData['slug'] = Str::slug($validatedData['slug'], '-');
-        $validatedData['image'] = $request->file('image')->store('post-images');
-        // $validatedData['slug'] = Str::slug($validatedData['title'], '-');
+        
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('post-images');
+        }
+
+        if($request->slug){
+            $validatedData['slug'] = Str::slug($request['slug'], '-');
+        }else{
+            $validatedData['slug'] = Str::slug($validatedData['title'], '-');
+        }
         Post::create($validatedData);
 
         return redirect('/dashboard/posts')->with('success', 'New post has been added!');
@@ -107,4 +114,5 @@ class DashboardPostController extends Controller
         Post::destroy($post->id);
         return redirect('/dashboard/posts')->with('success', 'Post has been deleted!');
     }
+
 }

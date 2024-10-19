@@ -33,8 +33,8 @@
 
 
 
+                    <img class="max-w-full  max-h-[350px] hidden" id="file-preview">
                     <div class="px-4 max-sm:w-[302px] sm:max-w-screen-md ">
-                        <img class="w-[350px] h-[250px] hidden" id="file-preview">
                         <div class="mb-10 items-center grid grid-cols-1 sm:grid-cols-2 grid-rows-1">
                             {{-- <label for="image" class="text-xl font-medium">Image</label>
                             <input name="image" id="image" type="text" placeholder="Link Image your blog"

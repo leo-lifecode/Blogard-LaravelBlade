@@ -38,8 +38,8 @@
     <x-navbar />
     {{ $slot }}
 
-    <footer class="h-[80px] w-full bg-slate-50 flex items-center justify-center">
-        <div class="w-full text-center text-slate-400">
+    <footer class="relative left-0 bottom-0 h-[80px] w-full bg-slate-50 ">
+        <div class="w-full text-center text-slate-400 h-full flex items-center justify-center">
             <p>Copyright &copy; 2023 - All right reserved</p>
         </div>
     </footer>

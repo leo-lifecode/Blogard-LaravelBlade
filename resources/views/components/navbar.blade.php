@@ -25,7 +25,7 @@
         </div>
         <div class="flex flex-shrink-0 gap-2 sm:gap-5 justify-center items-center">
             <div>
-                <a href="" rel="noopener noreferrer">
+                <a href="/writeblog">
                     <div
                         class="flex items-center gap-2 bg-blue-100 hover:bg-blue-300 text-blue-400 hover:text-white py-2 px-1 sm:px-4 rounded-xl">
                         <img src="{{asset('img/edit.png')}}" width="25" alt="">
@@ -35,8 +35,8 @@
             </div>
             <div class="relative cursor-pointer hover:shadow-lg rounded-full" id="container-profile">
                 @auth
-                <img src="{{ auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar ) : 'https://cdn-icons-png.flaticon.com/512/149/149071.png'}}" width="40" height="40"
-                    class="cursor-pointer rounded-full">
+                <img src="{{ auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar ) : 'https://cdn-icons-png.flaticon.com/512/149/149071.png'}}"
+                    width="40" height="40" class="cursor-pointer rounded-full">
                 @else
                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" width="35">
                 @endauth
@@ -46,30 +46,79 @@
                         <li class="flex gap-2 hover:bg-slate-200 rounded-md">
                             @if (Auth::check())
                             <a href="/profile/{{ auth()->user()->username }}" class="w-full flex gap-2 p-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                    viewBox="0 0 24 24" aria-label="Profile">
-                                    <circle cx="12" cy="7" r="4.5" stroke="currentColor"></circle>
-                                    <path stroke="currentColor" stroke-linecap="round"
-                                        d="M3.5 21.5v-4.342C3.5 15.414 7.306 14 12 14s8.5 1.414 8.5 3.158V21.5"></path>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_14_13)">
+                                        <path
+                                            d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z"
+                                            stroke="#0C4284" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M6 21V19C6 17.9391 6.42143 16.9217 7.17157 16.1716C7.92172 15.4214 8.93913 15 10 15H14C15.0609 15 16.0783 15.4214 16.8284 16.1716C17.5786 16.9217 18 17.9391 18 19V21"
+                                            stroke="#0C4284" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_14_13">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
                                 </svg>
+
                                 Profile</a>
                             @else
                             <a href="/login" class="w-full flex gap-2 p-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                    viewBox="0 0 24 24" aria-label="Profile">
-                                    <circle cx="12" cy="7" r="4.5" stroke="currentColor"></circle>
-                                    <path stroke="currentColor" stroke-linecap="round"
-                                        d="M3.5 21.5v-4.342C3.5 15.414 7.306 14 12 14s8.5 1.414 8.5 3.158V21.5"></path>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_14_13)">
+                                        <path
+                                            d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z"
+                                            stroke="#0C4284" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M6 21V19C6 17.9391 6.42143 16.9217 7.17157 16.1716C7.92172 15.4214 8.93913 15 10 15H14C15.0609 15 16.0783 15.4214 16.8284 16.1716C17.5786 16.9217 18 17.9391 18 19V21"
+                                            stroke="#0C4284" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_14_13">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
                                 </svg>
+
                                 Profile</a>
                             @endif
                         </li>
                         <li class="flex gap-2 hover:bg-slate-200 rounded-md">
                             @if (Auth::check())
                             <a href="/dashboard" class="w-full flex gap-2 p-2">
-                                <img width="24" height="20"
-                                    src="https://img.icons8.com/pulsar-line/24/dashboard-layout.png"
-                                    alt="dashboard-layout" />
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_14_53)">
+                                        <path
+                                            d="M9 4H5C4.44772 4 4 4.44772 4 5V9C4 9.55228 4.44772 10 5 10H9C9.55228 10 10 9.55228 10 9V5C10 4.44772 9.55228 4 9 4Z"
+                                            stroke="#0C4284" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M9 14H5C4.44772 14 4 14.4477 4 15V19C4 19.5523 4.44772 20 5 20H9C9.55228 20 10 19.5523 10 19V15C10 14.4477 9.55228 14 9 14Z"
+                                            stroke="#0C4284" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M19 14H15C14.4477 14 14 14.4477 14 15V19C14 19.5523 14.4477 20 15 20H19C19.5523 20 20 19.5523 20 19V15C20 14.4477 19.5523 14 19 14Z"
+                                            stroke="#0C4284" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M14 7H20" stroke="#0C4284" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M17 4V10" stroke="#0C4284" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_14_53">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
                                 Dashboard</a>
                             @endif
                         </li>

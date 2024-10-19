@@ -208,6 +208,7 @@ header {
 .card-content h2 {
     font-size: 36px;
     margin: 20px 0 10px 0;
+    font-weight: 700;
 }
 
 .card-content p {
