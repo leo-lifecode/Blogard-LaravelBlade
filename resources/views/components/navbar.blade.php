@@ -91,7 +91,7 @@
                             @endif
                         </li>
                         <li class="flex gap-2 hover:bg-slate-200 rounded-md">
-                            @if (Auth::check())
+                            @if (Auth::check() && Auth::user()->is_admin == 1)
                             <a href="/dashboard" class="w-full flex gap-2 p-2">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">

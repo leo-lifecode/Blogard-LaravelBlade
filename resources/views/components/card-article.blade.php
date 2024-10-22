@@ -4,7 +4,7 @@ $title = Str::limit($post['title'], 55);
 $idslug = Str::slug($post['slug']);
 $imagePost = $post['image'];
 $datePost = $post['created_at']->diffForHumans();
-$username = $post['user']['name'];
+$username = $post['user']['username'];
 $category = $post['category']['name'];
 $slugcategory = Str::slug($post['category']['slug']);
 ?>
