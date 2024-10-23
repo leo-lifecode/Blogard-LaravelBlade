@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -52,26 +53,11 @@
                     <trix-editor toolbar="my_toolbar" input="content"></trix-editor>
                 </div>
             </div>
-            <button type="submit" class="px-4 py-2 bg-blue-700 text-white rounded-xl hover:bg-blue-500 w-max cursor-pointer border-none text-lg duration-100">Submit</button>
+            <button type="submit"
+                class="px-4 py-2 bg-blue-700 text-white rounded-xl hover:bg-blue-500 w-max cursor-pointer border-none text-lg duration-100">Submit</button>
         </form>
     </div>
 </body>
-<script>
-    const input = document.getElementById('file-input');
-        const previewPhoto = () => {
-
-        const file = input.files;
-        if (file) {
-            const fileReader = new FileReader();
-            const preview = document.getElementById('file-preview');
-            preview.classList.remove('hidden');
-        fileReader.onload = function (event) {
-                preview.setAttribute('src', event.target.result);
-            }
-            fileReader.readAsDataURL(file[0]);
-        }
-    }
-    input.addEventListener("change", previewPhoto);
-</script>
+<script src={{ asset('js/filePreviewLoader.js') }}></script>
 
 </html>

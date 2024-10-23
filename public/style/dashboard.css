@@ -292,10 +292,7 @@ table tr:hover {
     .btn-add{
         padding: 5px 10px;
     }
-    .menu-btn {
-        margin: 8px;
-        display: block;
-    }
+    
 }
 
 @media (max-width: 1200px) {
@@ -310,5 +307,10 @@ table tr:hover {
     }
     .close-btn {
         display: block !important;
+    }
+    
+    .menu-btn {
+        margin: 8px;
+        display: block;
     }
 }

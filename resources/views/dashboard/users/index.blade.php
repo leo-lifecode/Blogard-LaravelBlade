@@ -6,9 +6,13 @@
         <h1 class="text-xl font-semibold">Users Management</h1>
     </div>
     @if (session()->has('success'))
-    <div class="text-message font-medium text-md bg-yellow-100 p-2 rounded-lg">
-        <p>{{ session('success') }}</p>
-    </div>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: "{{ session('success') }}",
+            });
+        </script>
     @endif
     <div class="table-container">
         <table>
@@ -37,7 +41,7 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-delete"
-                                onclick="confirm('Are you sure delete user?')">Delete</button>
+                                id="confirm-delete">Delete</button>
                         </form>
                     </td>
                 </tr>

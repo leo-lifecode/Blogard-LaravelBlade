@@ -50,7 +50,7 @@ Route::get('/profile/{user:username}', function (User $user) {
 // Authenticated User Routes
 Route::middleware('auth')->group(function () {
     Route::get('/profile/{user:username}/settings', function (User $user) {
-        return view('editProfile', ['profiles' => $user]);
+        return view('editProfile', ['profile' => $user]);
     });
 
     Route::post('/profile/{user:username}/settings/edit', [ProfileController::class, 'edit']);

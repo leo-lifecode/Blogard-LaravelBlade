@@ -8,10 +8,17 @@
         <a href="/dashboard/category/create" class="btn btn-add text-[12px]">+ Add New Category</a>
     </div>
     @if (session()->has('success'))
-    <div class="text-message font-medium text-md bg-yellow-100 p-2 rounded-lg">
+    {{-- <div class="text-message font-medium text-md bg-yellow-100 p-2 rounded-lg">
         <p>{{ session('success') }}</p>
-    </div>
-    @endif  
+    </div> --}}
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: "{{ session('success') }}",
+        });
+    </script>
+    @endif
     <div class="table-container">
         <table>
             <thead>
@@ -31,7 +38,7 @@
                         <form action="/dashboard/category/{{$category->slug}}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-delete" onclick="confirm('Are you sure delete category?')">Delete</button>
+                            <button id="confirm-delete" type="submit" class="btn btn-delete">Delete</button>
                         </form>
                     </td>
                 </tr>

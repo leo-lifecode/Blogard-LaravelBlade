@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="w-full px-4">
-                        <button type="submit"
+                        <button id="confirm-submit" type="submit"
                             class="px-4 py-2 bg-stone-700 text-white rounded-xl hover:bg-stone-500 cursor-pointer text-[14px] font-medium">Submit</button>
                         <a href="/dashboard/category" class="no-underline px-4 py-2 bg-stone-700 text-white rounded-xl hover:bg-stone-500 font-medium
                             cursor-pointer">Cancel

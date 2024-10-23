@@ -22,6 +22,10 @@ $dateMonth = $date->translatedFormat('F d, Y');
     rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
   <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   @vite('resources/css/app.css')
 </head>
 
@@ -76,7 +80,9 @@ $dateMonth = $date->translatedFormat('F d, Y');
       </div>
       <div class="user-info">
         <span class="user-name hidden sm:block">{{auth()->user()->username}}</span>
-        <img src="{{ auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : 'https://cdn-icons-png.flaticon.com/512/149/149071.png' }} " width="50" height="50" class="user-avatar rounded-full" />
+        <img
+          src="{{ auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : 'https://cdn-icons-png.flaticon.com/512/149/149071.png' }} "
+          width="50" height="50" class="user-avatar rounded-full" />
       </div>
     </header>
 
@@ -84,44 +90,8 @@ $dateMonth = $date->translatedFormat('F d, Y');
   </div>
 
 
-  <script>
-    const menuBtn = document.getElementById("menu-btn");
-        const sidebar = document.getElementById("sidebar");
-        const closeBtn = document.getElementById("close-btn");
-        menuBtn.addEventListener("click", () => {
-          sidebar.style.marginLeft = "0rem";
-        });
-  
-        closeBtn.addEventListener("click", () => {
-          sidebar.style.marginLeft = "-17rem";
-        });
-  
-        const setSidebarPosition = () => {
-          if (window.innerWidth > 1200) {
-            sidebar.style.marginLeft = "0rem";
-          } else {
-            sidebar.style.marginLeft = "-17rem";
-          }
-        };
-        setSidebarPosition();
-        window.addEventListener("resize", setSidebarPosition);
-
-        const input = document.getElementById('file-input');
-        const previewPhoto = () => {
-
-        const file = input.files;
-        if (file) {
-            const fileReader = new FileReader();
-            const preview = document.getElementById('file-preview');
-            preview.classList.remove('hidden');
-        fileReader.onload = function (event) {
-                preview.setAttribute('src', event.target.result);
-            }
-            fileReader.readAsDataURL(file[0]);
-        }
-    }
-    input.addEventListener("change", previewPhoto);
-  </script>
+  <script src="{{ asset('js/index.js') }}"></script>
+  <script src="{{ asset('js/filePreviewLoader.js') }}"></script>
 </body>
 
 </html>

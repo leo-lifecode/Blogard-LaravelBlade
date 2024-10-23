@@ -13,6 +13,7 @@ $content = $post['content'];
 
 
 <x-layout>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @vite('resources/css/base.css')
 
     <div class="flex justify-center bg-slate-50 min-h-screen p-4">
@@ -67,7 +68,9 @@ $content = $post['content'];
                     <p class="font-semibold">Leave Comment</p>
                     <form action="/comment/commentcreate" method="POST">
                         @csrf
-                        <textarea name="content" class="resize-none p-2 w-full h-[200px] border border-black rounded-md shadow-md" placeholder="Share Your Opinion About This Post"></textarea>
+                        <textarea name="content"
+                            class="resize-none p-2 w-full h-[200px] border border-black rounded-md shadow-md"
+                            placeholder="Share Your Opinion About This Post"></textarea>
                         <input type="hidden" name="post_id" value="{{ $post['id'] }}">
                         <button type="submit"
                             class="w-full bg-black text-white py-1 text-lg rounded-md hover:bg-slate-900">Submit</button>

@@ -1,5 +1,3 @@
-{{-- {{dd($category->slug)}} --}}
-
 <x-layout>
     @vite('resources/css/base.css')
     <div class="max-w-[1400px] m-auto block min-h-screen bg-slate-50">

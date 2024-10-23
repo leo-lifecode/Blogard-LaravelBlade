@@ -13,7 +13,7 @@
 
 </head>
 <style>
-    .scrulbar{
+    .scrulbar {
         scrollbar-color: rgb(223, 223, 223);
         scrollbar-width: 2px;
         overflow-x: scroll;
@@ -23,15 +23,15 @@
         border-radius: 20px;
         background-color: rgba(218, 218, 218, 0.404);
     }
+
     .scrulbar::-webkit-scrollbar-track {
         scrollbar-width: 2px;
         background-color: transparent;
-    }    
+    }
 
     .scrulbar::-webkit-scrollbar {
         overflow-x: scroll;
     }
-
 </style>
 
 <body class="min-h-screen d-flex flex-col font-sans p-2">
@@ -44,14 +44,7 @@
         </div>
     </footer>
 </body>
-
-<script>
-    const containerProfile = document.querySelector('#container-profile');
-    const MenuProfile = document.querySelector('#menu-profile');
-
-        containerProfile.addEventListener('click', () => {
-            MenuProfile.classList.toggle('hidden');
-        });
-</script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src={{ asset('js/index.js') }}></script>
 
 </html>
