@@ -7,8 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class DashboardPostController extends Controller
 {
@@ -44,14 +47,14 @@ class DashboardPostController extends Controller
         ]);
 
         $validatedData['user_id'] = auth()->user()->id;
-        
+
         if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('post-images');
         }
 
-        if($request->slug){
+        if ($request->slug) {
             $validatedData['slug'] = Str::slug($request['slug'], '-');
-        }else{
+        } else {
             $validatedData['slug'] = Str::slug($validatedData['title'], '-');
         }
         Post::create($validatedData);
@@ -115,4 +118,25 @@ class DashboardPostController extends Controller
         return redirect('/dashboard/posts')->with('success', 'Post has been deleted!');
     }
 
+    public function chartPost(): View
+    {
+        $monthlyPosts = Post::selectRaw('MONTH(created_at) as month, COUNT(*) as count')
+            ->groupBy('month')
+            ->orderBy('month')
+            ->get();
+
+        $labels = $monthlyPosts->map(function ($data) {
+            return Carbon::create()->month($data->month)->format('F');
+        });
+        $posts = $monthlyPosts->pluck('count');
+
+        return view('dashboard.index', [
+            'labels' => $labels,
+            'posts' => $posts,
+            'totalPosts' => Post::count(),
+            'users' => User::count(),
+            'comments' => Comment::count(),
+        ]);
+        
+    }
 }

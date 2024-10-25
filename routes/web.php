@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\chartJsController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardCategoryController;
 use App\Http\Controllers\DashboardPostController;
@@ -68,10 +69,8 @@ Route::middleware('auth')->group(function () {
 });
 
 // Admin Routes (only accessible by admin users)
-Route::middleware(['auth','onlyAdmin'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard.index');
-    });
+Route::middleware(['auth', 'onlyAdmin'])->group(function () {
+    Route::get('/dashboard', [DashboardPostController::class, 'chartPost']);
 
     Route::resource('/dashboard/posts', DashboardPostController::class);
     Route::resource('/dashboard/users', DashboardUserController::class)->except(['show', 'create', 'store']);
