@@ -7,60 +7,109 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# Blogard Community
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Blogard Community adalah platform blogging komunitas tempat pengguna dapat berbagi pemikiran, berinteraksi melalui komentar, dan menikmati konten dari kategori yang berbeda. Proyek ini dibangun menggunakan Laravel dan Chart.js, menyediakan fitur autentikasi, manajemen posting, komentar, kategori, serta halaman dashboard dengan analitik post.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Fitur Utama
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Membuat dan Mengelola Post**: Pengguna dapat membuat, mengedit, dan menghapus posting blog mereka.
+- **Kategori**: Setiap post dapat dikaitkan dengan kategori tertentu untuk membantu pengelompokan konten.
+- **Komentar**: Pengguna dapat meninggalkan komentar pada post untuk berinteraksi dengan penulis dan komunitas.
+- **Manajemen Pengguna**: Sistem autentikasi dan autorisasi yang memungkinkan akses admin ke fitur khusus.
+- **Dashboard Analitik**: Admin dapat melihat statistik posting per bulan menggunakan Chart.js.
 
-## Learning Laravel
+## Teknologi yang Digunakan
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Framework**: Laravel 11
+- **Database**: MySQL
+- **Frontend**: Blade Template Engine, Chart.js
+- **CSS**: Tailwind CSS
+- **Autentikasi**: Laravel Auth
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Instalasi
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. **Clone Repository**
 
-## Laravel Sponsors
+   ```bash
+   git clone https://github.com/username/blogard-community.git
+   cd blogard-community
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+2. **Instal Dependensi**
 
-### Premium Partners
+   Jalankan perintah berikut untuk menginstal dependensi PHP dan NPM:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+   ```bash
+   composer install
+   npm install && npm run dev
+   ```
 
-## Contributing
+3. **Konfigurasi Lingkungan**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+   Salin `.env.example` menjadi `.env` dan sesuaikan pengaturan database serta pengaturan lainnya:
 
-## Code of Conduct
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. **Migrasi dan Seeder**
 
-## Security Vulnerabilities
+   Buat tabel dan data awal dengan perintah berikut:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+   ```bash
+   php artisan migrate --seed
+   ```
 
-## License
+5. **Jalankan Server**
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+   Jalankan server pengembangan dengan:
+
+   ```bash
+   php artisan serve
+   ```
+
+6. **Akses di Browser**
+
+   Akses aplikasi di `http://localhost:8000`.
+
+## Dokumentasi Endpoint
+
+| Method | Endpoint                       | Description                            |
+|--------|--------------------------------|----------------------------------------|
+| GET    | `/`                            | Menampilkan halaman utama              |
+| GET    | `/post/{post:slug}`            | Menampilkan detail post                |
+| POST   | `/comment/commentcreate`       | Menambahkan komentar pada post         |
+| GET    | `/category/{category:slug}`    | Menampilkan semua post pada kategori   |
+| GET    | `/profile/{user:username}`     | Menampilkan halaman profil pengguna    |
+| GET    | `/writeblog`                   | Menampilkan halaman buat posting baru  |
+| POST   | `/writeblog/writecreate`       | Menyimpan post baru                    |
+| GET    | `/dashboard`                   | Menampilkan halaman dashboard admin    |
+
+## Middleware
+
+- **OnlyAdmin**: Middleware khusus untuk memastikan bahwa hanya admin yang dapat mengakses halaman dan fitur tertentu di dalam dashboard.
+
+## Struktur Database
+
+1. **users**: Menyimpan informasi pengguna seperti username, email, dan status admin.
+2. **posts**: Menyimpan detail dari setiap posting termasuk judul, konten, slug, dan ID kategori.
+3. **comments**: Menyimpan komentar untuk setiap post yang dibuat oleh pengguna.
+4. **categories**: Mengelompokkan setiap post sesuai dengan kategori yang relevan.
+
+## Dashboard Analitik
+
+Dashboard untuk admin dilengkapi dengan analitik jumlah post per bulan menggunakan **Chart.js**, memungkinkan admin untuk memonitor aktivitas blogging di platform.
+
+## Kontribusi
+
+Jika Anda ingin berkontribusi pada proyek ini, silakan buat pull request atau buka issue untuk mendiskusikan ide-ide Anda.
+
+## Lisensi
+
+Proyek ini dilisensikan di bawah [MIT License](LICENSE).
+
+---
+
+Dengan README ini, pengembang dan pengguna lain bisa memahami alur, fitur, dan tujuan dari proyek **Blogard Community**. Sesuaikan detail spesifik jika ada perubahan atau fitur tambahan.
