@@ -19,6 +19,14 @@ Blogard Community adalah platform blogging komunitas tempat pengguna dapat berba
 - **Manajemen Pengguna**: Sistem autentikasi dan autorisasi yang memungkinkan akses admin ke fitur khusus.
 - **Dashboard Analitik**: Admin dapat melihat statistik posting per bulan menggunakan Chart.js.
 
+## Next Features
+- **Nested Comments**: Memungkinkan pengguna untuk membalas komentar, menciptakan diskusi yang lebih terstruktur pada setiap posting.
+- **Like/Dislike System**: Fitur interaksi tambahan bagi pengguna untuk menyukai atau tidak menyukai posting atau komentar.
+- **User Notifications**: Memberi notifikasi kepada pengguna jika ada komentar baru pada posting mereka atau jika pengguna lain membalas komentar mereka.
+- **Tagging System**: Selain kategori, post dapat ditandai dengan tag untuk meningkatkan keterkaitan konten.
+- **Post Search and Filter**: Memungkinkan pengguna mencari posting berdasarkan kata kunci atau filter tertentu, seperti kategori atau popularitas.
+- **Improved Analytics Dashboard**: Memberikan admin statistik lebih mendetail seperti total views, jumlah pengguna aktif, dan posting terpopuler.
+
 ## Teknologi yang Digunakan
 
 - **Framework**: Laravel 11
