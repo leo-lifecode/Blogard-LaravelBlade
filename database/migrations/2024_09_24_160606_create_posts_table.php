@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title', 200)->nullable();
             $table->string('slug', 255)->unique();
             $table->string('image', 200)->nullable();
-            $table->string('content', 500)->nullable();
+            $table->text('content')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->unsignedBigInteger('user_id');
