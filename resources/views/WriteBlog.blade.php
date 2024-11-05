@@ -11,6 +11,7 @@
     @vite('resources/css/app.css')
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet" />
+        <link rel="shortcut icon" href={{ asset('img/bro.png') }} type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
     <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
     <title>Blogard Community</title>
@@ -21,11 +22,14 @@
         <div class="text-left font-semibold mb-[25px] capitalize">
             <a href="/" class="text-slate-400 hover:text-slate-600 no-underline">Kembali</a>
         </div>
-        <form action="/writeblog/writeblog" method="POST" class="space-y-4" enctype="multipart/form-data">
+        <form action="/writeblog/store" method="POST" class="space-y-4" enctype="multipart/form-data">
             @csrf
             <div class="w-full">
                 <input type="text" name="title" placeholder="Title"
                     class=" border-t-0 border-x-0 text-5xl font-semibold px-2 py-3 placeholder:text-slate-400 rounded-md leading-tight focus:outline-none border-b border-gray-400 w-full">
+                @error('title')
+                <div class="text-red-500"> {{ $message }}</div>
+                @enderror
             </div>
             <div class="w-full">
                 <select id="category_id" name="category_id"
@@ -34,6 +38,9 @@
                     <option value={{$Category->id}}>{{ $Category->name }}</option>
                     @endforeach
                 </select>
+                @error('category_id')
+                <div class="text-red-500"> {{ $message }}</div>
+                @enderror
             </div>
             <div class="w-full">
                 <img class="max-w-full w-full h-[350px] hidden" id="file-preview">
@@ -44,6 +51,9 @@
                       file:bg-violet-50 file:text-gray-700
                       hover:file:bg-violet-100
                     " />
+                @error('image')
+                <div class="text-red-500"> {{ $message }}</div>
+                @enderror
             </div>
 
             <div class="w-full">
@@ -53,6 +63,9 @@
                     <div class="more-stuff-inbetween"></div>
                     <trix-editor toolbar="my_toolbar" input="content"></trix-editor>
                 </div>
+                @error('content')
+                <div class="text-red-500"> {{ $message }}</div>
+                @enderror
             </div>
             <button type="submit"
                 class="px-4 py-2 bg-blue-700 text-white rounded-xl hover:bg-blue-500 w-max cursor-pointer border-none text-lg duration-100">Submit</button>

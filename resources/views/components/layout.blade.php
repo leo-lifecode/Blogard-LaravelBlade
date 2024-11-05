@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
         rel="stylesheet">
     @vite('resources/css/app.css')
+    <link rel="shortcut icon" href={{ asset('img/bro.png') }} type="image/x-icon">
     <title>Blogard Community</title>
 
 </head>

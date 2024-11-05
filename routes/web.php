@@ -61,7 +61,7 @@ Route::middleware('auth')->group(function () {
         return view('writeBlog', ['categories' => Category::all()]);
     });
 
-    Route::post('/writeblog/writecreate', [DashboardPostController::class, 'store']);
+    Route::post('/writeblog/store', [DashboardPostController::class, 'store']);
     Route::post('/comment/commentcreate', [CommentController::class, 'store']);
 
     // Logout Route

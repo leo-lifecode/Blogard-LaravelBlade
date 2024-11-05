@@ -12,7 +12,7 @@ $slugcategory = Str::slug($post['category']['slug']);
 <div class="space-y-2 w-full max-md:flex md:block max-md:items-center p-2 hover:bg-slate-100">
     <a href="post/{{ $idslug }}">
         <div class="max-md:w-[130px] max-md:h-full md:w-full max-md:order-2 max-md:flex max-md:items-center">
-            <img class="rounded-xl shadow-md" class="w-[130px]" src={{ asset('storage/' . $imagePost) }} />
+            <img class="rounded-xl shadow-md h-[150px] text-center w-full" src={{ asset('storage/' . $imagePost) }} />
         </div>
     </a>
     <div class="text-slate-400 gap-1 text-[12px] items-center md:flex hidden">

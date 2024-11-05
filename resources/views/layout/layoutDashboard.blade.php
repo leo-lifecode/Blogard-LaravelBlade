@@ -23,7 +23,7 @@ $dateMonth = $date->translatedFormat('F d, Y');
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
   <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  
+  <link rel="shortcut icon" href={{ asset('img/bro.png') }} type="image/x-icon">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   @vite('resources/css/app.css')
@@ -34,8 +34,8 @@ $dateMonth = $date->translatedFormat('F d, Y');
     <button class="close-btn" id="close-btn">&times;</button>
     <div class="sidebar-header">
       <div class="image-sidebar">
-        <img src="https://via.placeholder.com/30" />
-        <h3>Bcom</h3>
+        <h3>
+          <a href="">Blogard</a></h3>
       </div>
     </div>
     <ul class="sidebar-menu">
@@ -74,8 +74,9 @@ $dateMonth = $date->translatedFormat('F d, Y');
           <i class="fas fa-bars"></i>
         </button>
         <div>
-          <h1>Welcome Back, {{auth()->user()->username}}</h1>
+          <h1> Welcome Back, {{auth()->user()->username}}</h1>
           <p class="date-time">{{ $dateToday }}, {{ $dateMonth }}</p>
+          <a href="/" class="text-[18px] font-semibold no-underline text-lime-600">back to home</a>
         </div>
       </div>
       <div class="user-info">
