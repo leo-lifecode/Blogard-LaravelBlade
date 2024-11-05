@@ -1,4 +1,3 @@
-
 <x-layout>
     @vite('resources/css/base.css')
     <div class="max-w-[1400px] m-auto block min-h-screen bg-slate-50">
@@ -12,7 +11,7 @@
                 </article>
                 {{ $posts->links() }}
             </main>
-            <x-aside></x-aside>
+            <x-asidenew></x-asidenew>
         </div>
     </div>
 </x-layout>
