@@ -60,6 +60,7 @@ Blogard Community adalah platform blogging komunitas tempat pengguna dapat berba
    ```bash
    cp .env.example .env
    php artisan key:generate
+   php artisan storage:link
    ```
 
 4. **Migrasi dan Seeder**
