@@ -21,7 +21,8 @@
         <div class="text-left font-semibold mb-[25px] capitalize">
             <a href="/" class="text-slate-400 hover:text-slate-600 no-underline">Kembali</a>
         </div>
-        <form action="/writeblog/store" method="POST" class="space-y-4">
+        <form action="/writeblog/writeblog" method="POST" class="space-y-4" enctype="multipart/form-data">
+            @csrf
             <div class="w-full">
                 <input type="text" name="title" placeholder="Title"
                     class=" border-t-0 border-x-0 text-5xl font-semibold px-2 py-3 placeholder:text-slate-400 rounded-md leading-tight focus:outline-none border-b border-gray-400 w-full">
