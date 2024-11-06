@@ -69,8 +69,8 @@ Blogard Community adalah platform blogging komunitas tempat pengguna dapat berba
 
 4. **Migrasi dan Seeder**
 
-    Buat tabel dan data awal dengan perintah berikut:
-
+    Import blogard.sql atau Buat tabel dan data awal dengan perintah berikut:
+    
     ```bash
     php artisan migrate --seed
     ```
