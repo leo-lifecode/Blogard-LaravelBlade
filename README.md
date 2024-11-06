@@ -1,6 +1,6 @@
 <p align="center">
-<img src="/blogard-community/public/img/blogard-home.png" width="200">
-<img src="/blogard-community/public/img/dashboard-blogard.png" width="200">
+<img src="/public/img/blogard-home.png" width="200">
+<img src="/public/img/dashboard-blogard.png" width="200">
 </p>
 
 <p align="center">
