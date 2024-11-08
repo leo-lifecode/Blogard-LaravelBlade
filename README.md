@@ -1,6 +1,6 @@
 <p align="center">
-<img src="/blogard-community/public/img/blogard-home.png" width="200">
-<img src="/blogard-community/public/img/dashboard-blogard.png" width="200">
+<img src="/public/img/blogard-home.png" width="400">
+<img src="/public/img/dashboard-blogard.png" width="400">
 </p>
 
 <p align="center">
@@ -69,8 +69,8 @@ Blogard Community adalah platform blogging komunitas tempat pengguna dapat berba
 
 4. **Migrasi dan Seeder**
 
-    Buat tabel dan data awal dengan perintah berikut:
-
+    Import blogard.sql atau Buat tabel dan data awal dengan perintah berikut:
+    
     ```bash
     php artisan migrate --seed
     ```
