@@ -83,9 +83,9 @@
                                     class="relative z-20 w-full rounded-lg bg-transparent py-[15px] px-2">
                                     @foreach ($Categories as $Category)
                                     @if ( old('category_id', $post->category_id) == $Category->id )
-                                    <option value={{$Category->id}} selected >{{ $Category->name }}</option>
+                                        <option value={{$Category->id}} selected >{{ $Category->name }}</option>
                                     @else
-                                    <option value={{$Category->id}}>{{ $Category->name }}</option>
+                                        <option value={{$Category->id}}>{{ $Category->name }}</option>
                                     @endif
                                     @endforeach
                                 </select>

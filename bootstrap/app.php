@@ -13,6 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'onlyAdmin' => \App\Http\Middleware\OnlyAdmin::class,
+            'existEditorPost' => \App\Http\Middleware\existEditorPost::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

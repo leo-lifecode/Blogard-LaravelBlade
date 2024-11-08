@@ -62,6 +62,9 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::post('/writeblog/store', [DashboardPostController::class, 'store']);
+    Route::get('/writeblog/edit/{post:slug}', [DashboardPostController::class, 'WriteBlogEdit'])->middleware('existEditorPost');
+    Route::delete('/writeblog/delete/{post:slug}', [DashboardPostController::class, 'destroy'])->middleware('existEditorPost');
+    Route::put('/writeblog/WriteBlogUpdate', [DashboardPostController::class, 'WriteBlogUpdate']);
     Route::post('/comment/commentcreate', [CommentController::class, 'store']);
 
     // Logout Route

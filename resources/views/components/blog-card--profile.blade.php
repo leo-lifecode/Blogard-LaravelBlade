@@ -12,13 +12,27 @@ $datePost = $post['created_at']->diffForHumans();
 <a href="/post/{{ $sluguser }}">
     <div class="space-y-2 w-full flex items-center">
         <div class="font-semibold w-full me-5 p-2">
-            <h1 class="max-md:text-xl md:text-2xl">
-                {{ $title }}
-            </h1>
-            <p class="mt-2 text-slate-400 lg:text-lg">{{ $datePost }}</p>
+            <div>
+                <h1 class="max-md:text-xl md:text-2xl">
+                    {{ $title }}
+                </h1>
+                <p class="mt-2 text-slate-400 lg:text-lg">{{ $datePost }}</p>
+            </div>
+            <div class="my-2 ms-[-5px] flex">
+                <!-- Menambahkan slug pada URL edit dan delete sebagai link langsung -->
+                <a href="/writeblog/edit/{{ $post->slug }}"
+                    class=" py-2 px-3 bg-blue-200 rounded-xl hover:bg-blue-300 me-1">Edit</a>
+                <form action="/writeblog/delete/{{ $post->slug }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="py-2 px-3 bg-orange-300 rounded-xl hover:bg-orange-500"
+                        id="confirm-delete">Delete</button>
+                </form>
+            </div>
         </div>
-        <div class="min-w-[130px] max-w-[160px]  flex items-center rounded-xl">
-            <img class="rounded-xl shadow-xl min-w-[130px] max-w-[160px]" src={{ asset('storage/' . $image) }} />
+        <div class="min-w-[160px] max-w-[200px]  flex items-center rounded-xl">
+            <img class="rounded-xl shadow-xl min-w-[160px] max-w-[200px] h-[130px]" src={{ asset('storage/' . $image)
+                }} />
         </div>
     </div>
 </a>

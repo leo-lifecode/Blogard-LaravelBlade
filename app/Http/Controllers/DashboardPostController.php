@@ -20,7 +20,7 @@ class DashboardPostController extends Controller
      */
     public function index()
     {
-        $posts =  Post::Search()->where('user_id', Auth::user()->id)->get();
+        $posts =  Post::Search()->get();
         return view('dashboard.posts.index', ['posts' => $posts]);
     }
 
@@ -118,6 +118,37 @@ class DashboardPostController extends Controller
         return redirect('/dashboard/posts')->with('success', 'Post has been deleted!');
     }
 
+    public function WriteBlogEdit(Request $request, Post $post)
+    {
+        return view('WriteBlogEdit', ['request'=>$request, 'post' => $post, 'Categories' => Category::all()]);
+    }
+
+    public function WriteBlogUpdate(Request $request, Post $post)
+    {
+        $rules = [
+            'title' => 'required|max:255|min:5',
+            'content' => 'required',
+            'category_id' => 'required',
+        ];
+
+        // if ($request->slug != $post->slug) {
+        //     $rules['slug'] = 'required|unique:posts';
+        // }
+
+        $validatedData = $request->validate($rules);
+
+
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('post-images');
+        }
+
+        $validatedData['user_id'] = auth()->user()->id;
+        Post::where('id', $post->id)->update($validatedData);
+        return redirect('/')->with('success', 'Post has been updated!');
+    }
     public function chartPost(): View
     {
         $monthlyPosts = Post::selectRaw('MONTH(created_at) as month, COUNT(*) as count')
