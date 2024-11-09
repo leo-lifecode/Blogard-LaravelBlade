@@ -22,12 +22,13 @@
         <div class="text-left font-semibold mb-[25px] capitalize">
             <a href="/" class="text-slate-400 hover:text-slate-600 no-underline">Kembali</a>
         </div>
-        <form action="/writeblog/WriteBlogUpdate" method="POST" class="space-y-4" enctype="multipart/form-data">
+        <form action="/writeblog/WriteBlogUpdate/{{ $post->id }}" method="POST" class="space-y-4" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <div class="w-full">
                 <input type="text" name="title" placeholder="Title" value="{{ old('title', $post->title) }}"
                     class=" border-t-0 border-x-0 text-5xl font-semibold px-2 py-3 placeholder:text-slate-400 rounded-md leading-tight focus:outline-none border-b border-gray-400 w-full">
+                <input type="text" name="slug" value="{{ old('slug', $post->slug) }}" hidden>
                 @error('title')
                 <div class="text-red-500"> {{ $message }}</div>
                 @enderror

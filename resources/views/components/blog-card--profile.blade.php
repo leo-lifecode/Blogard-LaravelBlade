@@ -22,7 +22,7 @@ $datePost = $post['created_at']->diffForHumans();
                 <!-- Menambahkan slug pada URL edit dan delete sebagai link langsung -->
                 <a href="/writeblog/edit/{{ $post->slug }}"
                     class=" py-2 px-3 bg-blue-200 rounded-xl hover:bg-blue-300 me-1">Edit</a>
-                <form action="/writeblog/delete/{{ $post->slug }}" method="POST">
+                <form action="/writeblog/delete/{{ $post->id }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="py-2 px-3 bg-orange-300 rounded-xl hover:bg-orange-500"
