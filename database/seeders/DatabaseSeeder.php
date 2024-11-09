@@ -43,14 +43,6 @@ class DatabaseSeeder extends Seeder
     
             Post::create([
                 'user_id' => 2,
-                'category_id' => 4,
-                'title' => 'What If This Was Your Daughter?',
-                'slug' => 'what-if-this-was-your-daughter',
-                'image' => 'post-images/E85vniMs3RjBAxyQNfuLJFGAdLVnGPSf2astQFo8.webp',
-                'content' => '<div><strong><br>What if this was your daughter?</strong></div><div><br>It’s a familiar outcry among feminists, a desperate attempt to stir a man’s empathy for women, particularly in a moment when he is demonstrating none. When, for example, he suggests that women who aren’t promiscuous won’t be affected by abortion bans. Or that it sounds reasonable to him that a man should be able to expect sex after buying a woman dinner. Or that it can’t be rape if she was wearing a push-up bra.</div><div><em><br>But what if it was your daughter?</em> we ask. Surely, he wouldn’t support the denial of medial care for his own offspring as punishment for her alleged sluttiness. Surely, he wouldn’t argue that his daughter should get on her knees just because a man bought her a drink. Surely, he wouldn’t justify rape just because his daughter wore a push-up bra to the dance.</div><div><br>And sometimes, this actually works. Sometimes, a man with little to no empathy for women will magically develop some when he has a daughter. In fact, it is common enough that there’s a name for this: the daughter effect.</div><div><br><br></div>',
-            ]);
-            Post::create([
-                'user_id' => 2,
                 'category_id' => 3,
                 'title' => 'Weekly Top 5 Tech Updates',
                 'slug' => 'weekly-top-5-tech-updates',

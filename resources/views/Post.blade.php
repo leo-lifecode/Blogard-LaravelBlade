@@ -20,7 +20,7 @@ $content = $post['content'];
         <div class="w-full md:max-w-[768px] h-max text-black flex-wrap flex flex-col gap-7">
             <main class="bg-white">
                 <div class="text-black mb-2 text-2xl font-bold">
-                    <h1 class="capitalize">{{ $post['title'] }}</h1>
+                    <h1 class="capitalize" id="title">{{ $post['title'] }}</h1>
                 </div>
                 <div class="flex gap-2 mb-4 flex-col">
                     <div id="container-profile" class="flex gap-2 items-center">
@@ -40,7 +40,7 @@ $content = $post['content'];
                         <img src="{{ asset('storage/' . $image) }}" alt="profile"
                             class="w-full max-h-[450px] min-h-[300px]" />
                     </div>
-                    <p>{!! $content !!}</p>
+                    <div id="content" class="content">{!! $content !!}</div>
                 </article>
             </main>
 

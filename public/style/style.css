@@ -1,0 +1,80 @@
+/* <br> tag - behaves like an inline element without a specific style */
+#title{
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0.67em 0;
+    line-height: 1.2;
+}
+#content > br {
+    display: inline;
+    content: '';
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+}
+
+#content > a {
+    color: blue; /* default link color */
+    text-decoration: underline; /* default underline style */
+    font-weight: normal;
+}
+
+/* Headings */
+#content > h1 {
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0.67em 0;
+    line-height: 1.2;
+}
+
+#content > h2 {
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0.83em 0;
+    line-height: 1.3;
+}
+
+#content > h3 {
+    display: block;
+    font-size: 1.17em;
+    font-weight: bold;
+    margin: 1em 0;
+    line-height: 1.4;
+}
+
+/* <strong> tag - emphasizes text with bold weight */
+#content > strong {
+    font-weight: bold;
+}
+
+/* <pre> tag - preserves whitespace, monospace font */
+#content > pre {
+    display: block;
+    font-family: monospace, monospace;
+    font-size: 1em;
+    white-space: pre;
+    margin: 1em 0;
+}
+
+/* <ul> - unordered list */
+#content > ul {
+    display: block;
+    list-style-type: disc;
+    margin: 1em 0;
+    padding-left: 40px; /* indent list items */
+}
+#content > ol {
+    display: block;
+    list-style-type: decimal; /* default numbering style */
+    margin: 1em 0;
+    padding-left: 40px; /* indent list items */
+}
+
+/* <li> - list item */
+#content > li {
+    display: list-item;
+    margin: 0.5em 0;
+}
