@@ -10,7 +10,7 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('Login');
+        return view('auth.Login');
     }
     public function authenticate(Request $request): RedirectResponse
     {
