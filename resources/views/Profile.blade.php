@@ -15,7 +15,7 @@
                 <div>
                     <article class="grid grid-cols-1 gap-5">
                         @foreach ($profile->posts as $post)
-                            <x-blog-card--profile :post="$post"></x-blog-card--profile>
+                            <x-blog-card--profile :post="$post" :profile="$profile"></x-blog-card--profile>
                         @endforeach
                     </article>
                 </div>
